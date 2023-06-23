@@ -27,7 +27,7 @@ public class IQueuePage {
 	@FindBy(xpath = "//a[text()='Try here>>>']")
 	private WebElement tryHere;
 
-	@FindBy(xpath = "//a[@href='implementation-collections']")
+	@FindBy(xpath = "//a[text()='Implementation using collections.deque']")
 	private WebElement ImplementationCollectionsDeque;
 	@FindBy(xpath = "//a[@href='Implementation-array']")
 	private WebElement ImplementationUsingArray;
@@ -118,6 +118,7 @@ public class IQueuePage {
 	}
 
 	public void clickOnImpUsingCollLink() {
+		driver.get(impColDeq);
 		ImplementationCollectionsDeque.click();
 
 	}

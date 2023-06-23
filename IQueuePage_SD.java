@@ -29,6 +29,7 @@ public class IQueuePage_SD {
 
 	String expectedResult = null;
 	
+	/* @TS_queue_02 */
 	@Given("The user is on homepage")
 	public void the_user_is_on_homepage() {
 		homePage.homepage();
@@ -45,6 +46,7 @@ public class IQueuePage_SD {
 		//System.out.println("actualURL  = " + actualURL);
 	}
 
+	/* @TS_queue_03 */
 	@Given("The user is on queue page")
 	public void the_user_in_queue_page() {
 		qPage.navigateToQueuePage();
@@ -60,6 +62,7 @@ public class IQueuePage_SD {
 		String actualURL = DriverFactory.getDriver().getCurrentUrl();
 		System.out.println("actualURL  = " + actualURL);
 	}
+	/* @TS_queue_04 */
 
 	@Given("The user is on Implementation of queue in python link page")
 	public void the_user_is_in_implementation_of_queue_in_python_link_page() {
@@ -79,7 +82,7 @@ public class IQueuePage_SD {
 		System.out.println("currentUrl = "+ currentUrl);
 		assertEquals(currentUrl,tryEditor);
 	}
-
+	/* @TS_queue_05 */
 	@Given("The user is on a page having an Editor with a Run button to test")
 	public void the_user_is_in_a_page_having_an_editor_with_a_run_button_to_test() {
 		DriverFactory.getDriver().get(tryEditor);
@@ -109,12 +112,12 @@ public class IQueuePage_SD {
 	    System.out.println("actualResult = "+ actualResult);
 	    assertEquals(actualResult, expectedResult);
 	}
-
+	/* @TS_queue_06 */
 	@When("The user enters invalid python code in Editor from sheet {string} and {int}")
-	public void the_user_enters_invalid_python_code_in_editor_from_sheet_and(String sheetName, Integer rowNumber) throws InvalidFormatException, IOException {
+	public void the_user_enters_invalid_python_code_in_editor_from_sheet_and(String Sheet2, Integer int1rowNumber) throws InvalidFormatException, IOException {
 		ExcelReader excel=new ExcelReader();
-	    List<Map<String,String>> list=excel.getData(XL_DATA_FILE_PATH,sheetName);
-	    Map<String,String> dataMap = list.get(rowNumber);
+	    List<Map<String,String>> list=excel.getData(XL_DATA_FILE_PATH,Sheet2);
+	    Map<String,String> dataMap = list.get(int1rowNumber);
 	    String pythonCode = dataMap.get("pythonCode");
 	    expectedResult  = dataMap.get("Result");
 
@@ -126,9 +129,10 @@ public class IQueuePage_SD {
 	public void the_user_gets_an_error_message() {
 		String errorMessage = qPage.getAlertMessage();
 		System.out.println("errorMessage = "+errorMessage);
+		System.out.println("driver.getTitle() = "+ DriverFactory.getDriver().getTitle());
 		assertEquals(errorMessage, expectedResult);
 	}
-
+	/* @TS_queue_07 */
 	@Given("The user in editor page and navigates to the queue page")
 	public void the_user_in_editor_page_and_navigates_to_the_queue_page() {
 		DriverFactory.getDriver().get("https://dsportalapp.herokuapp.com/queue/");
@@ -141,12 +145,12 @@ public class IQueuePage_SD {
 
 	@Then("The user should be redirected to Implementation using collections deque page")
 	public void the_user_should_be_redirected_to_implementation_using_collections_deque_page() {
-		
+		qPage.navigateToImplementationCollectionsDeque();
 	}
-
+	/* @TS_queue_08 */
 	@Given("The user in implementation using collections page")
 	public void the_user_in_implementation_using_collections_page() {
-		
+		qPage.clickOnImpUsingCollLink();
 	}
 
 	@When("The user clicks on Implementation using array link")
@@ -158,7 +162,7 @@ public class IQueuePage_SD {
 	public void the_user_should_be_redirected_to_implementation_using_array_page() {
 		qPage.navigateToImplementationUsingArray();
 	}
-
+	/* @TS_queue_09 */
 	@Given("The user on implementation using array page")
 	public void the_user_in_implementation_using_array_page() {
 		
@@ -173,7 +177,7 @@ public class IQueuePage_SD {
 	public void the_user_should_be_redirected_to_queue_operations_page() {
 		qPage.navigateToQueueOperationsLink();
 	}
-
+	/* @TS_queue_10 */
 	@Given("The user is on Queue Operations page")
 	public void the_user_in_queue_operations_page() {
 		qPage.navigateToQueueOperationsLink();
@@ -196,3 +200,9 @@ public class IQueuePage_SD {
 		qPage.navigateToPracticeQuestionsLink();
 	}
 }
+
+/*@Given("The user on Queue Operations page")
+public void the_user_on_queue_operations_page() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}*/
