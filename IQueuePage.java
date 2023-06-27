@@ -154,4 +154,18 @@ public class IQueuePage {
 	public void navigateToEditorinputLink() {
 		driver.get(tryEditor);
 	}
+
+	public void clickLink(String string) {
+		if("Implementation of Queue in Python".equals(string)) {
+			ImplementationQueuePython.click();
+		} else if("Implementation using collections.deque".equals(string)) {
+			ImplementationCollectionsDeque.click();
+		}
+		else if("Implementation using array".equals(string)) {
+			ImplementationUsingArray.click();
+		}
+		else if("Queue Operations".equals(string)) {
+			QueueOperations.click();
+		}
+	}
 }
