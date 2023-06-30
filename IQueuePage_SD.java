@@ -65,13 +65,11 @@ public class IQueuePage_SD {
 
 	@Given("The user is in a {string} page for queue having an tryEditor with a Run button to test")
 	public void the_user_is_in_a_page_for_queue_having_an_try_editor_with_a_run_button_to_test(String string) {
-		logger.info("user will be navigated to queue page");
-		qPage.navigateToQueuePage();
+		qPage.navigateToQueuePage();                  //
 		qPage.clickLink(string);
-		logger.info("Testing Try Here Link");
 		qPage.clickOnTryHereLink();
 	}
-
+	
 	@When("The user enter valid python code in tryEditor for queue from sheet {string} and {int}")
 	public void the_user_enter_valid_python_code_in_try_editor_for_queue_from_sheet_and(String sheetName, Integer rowNumber) {
 		ExcelReader excel = new ExcelReader();
